@@ -1,11 +1,18 @@
 <h1><%= @restaurant.name %></h1>
 
 <p>
-  address:
+  <strong>Owner:</strong>
+  <%= @restaurant.owner.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
   <%= @restaurant.address %>
 </p>
 
 <p>
-  capacity:
+  <strong>Capacity:</strong>
   <%= @restaurant.capacity %>
 </p>
+
+<%= render 'reservation' %>

@@ -1,0 +1,15 @@
+<h2>Reserve a table at <span class="name"><%= @restaurant.name %></span></h2>
+
+<%= form_for [@restaurant, @reservation] do |f| %>
+  <div class="field">
+    <%= f.label :time %>
+    <%= f.datetime_field :time %>
+  </div>
+  <div class="field">
+    <%= f.label :party_size %>
+    <%= f.number_field :party_size %>
+  </div>
+  <div class="submit">
+    <%= f.submit 'Reserve a table' %>
+  </div>
+<% end %>
