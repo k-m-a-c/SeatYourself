@@ -1,0 +1,14 @@
+<h1>All ze restaurants!</h1>
+
+<%= link_to "Create Restaurant", new_restaurant_path %>
+
+<% if @restaurants.any? %>
+
+  <ul>
+    <% @restaurants.each do |r| %>
+      <li><%= r.name %> | <%= r.address %> | <%= r.capacity %> | <%= link_to "show", restaurant_path(r) %></li>
+    <% end %>
+  </ul>
+
+<% end %>
+
