@@ -1,5 +1,6 @@
 <h1>Log in</h1>
 <%= form_tag sessions_path do %>
+
   <div class="field">
     <%= label_tag :email %>
     <%= email_field_tag :email %>
@@ -11,4 +12,5 @@
   <div class="submit">
     <%= button_tag "Log in" %>
   </div>
+
 <% end %>

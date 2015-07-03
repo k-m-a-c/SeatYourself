@@ -4,13 +4,14 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.user = current_user
-    @restaurant.reservations << @reservation
+    @reservation.restaurant = @restaurant
 
-    if @restaurant.save
+    if @reservation.save
       flash[:notice] = "Reservation booked at #{@restaurant.name}"
       redirect_to restaurants_path
     else
-      render :new
+      flash[:alert] = "Woops, your reservation wasn't saved!"
+      render "/restaurants/show"
     end
   end
 
