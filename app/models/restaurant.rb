@@ -7,3 +7,4 @@ class Restaurant < ActiveRecord::Base
   validates :capacity, presence: true, numericality: true
   validates :address, presence: true, uniqueness: true
 end
+

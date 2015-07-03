@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+  private
+  def load_restaurant
+    @restaurant = Restaurant.find(params[:restaurant_id])
+  end
 end

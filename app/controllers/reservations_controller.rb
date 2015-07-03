@@ -25,8 +25,4 @@ class ReservationsController < ApplicationController
   def reservation_params
     params.require(:reservation).permit(:party_size, :time)
   end
-
-  def load_restaurant
-    @restaurant = Restaurant.find(params[:restaurant_id])
-  end
 end
