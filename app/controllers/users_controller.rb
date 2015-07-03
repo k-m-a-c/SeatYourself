@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:notice] = "YOU CREATED A FUCKING ACCOUNT! NICE!"
+      flash[:notice] = "YOU CREATED AN ACCOUNT! NICE!"
       redirect_to :root
     else
       render :new
