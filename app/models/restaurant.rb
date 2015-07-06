@@ -1,6 +1,7 @@
 class Restaurant < ActiveRecord::Base
   has_many :reservations
   has_many :users, through: :reservations
+  has_and_belongs_to_many :cuisines
   belongs_to :owner, class_name: "User"
 
   validates :name, presence: true
@@ -12,4 +13,3 @@ class Restaurant < ActiveRecord::Base
     capacity > size + r.sum(:party_size)
   end
 end
-
