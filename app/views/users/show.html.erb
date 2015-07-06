@@ -1,0 +1,17 @@
+<h1>Your Reservations</h1>
+
+<% if @user.reservations.any? %>
+
+  <ul>
+    <% @user.reservations.each do |r| %>
+      <li>
+        <p> <%= link_to r.restaurant.name, restaurant_path(r.restaurant) %></p>
+        <p><%= r.time.to_formatted_s(:long_ordinal)  %></p>
+      </li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <%= link_to 'Make a reservation', restaurants_path %>
+
+<% end %>
