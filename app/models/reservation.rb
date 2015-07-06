@@ -25,4 +25,10 @@ class Reservation < ActiveRecord::Base
     end
   end
 
+  def time_must_be_on_the_hour
+    if time.present? && time #divided by an hour isn't equal to 1
+      errors.add(:time, "must be at the top of the hour")
+    end
+  end
+
 end
