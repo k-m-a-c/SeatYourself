@@ -1,7 +1,6 @@
 <h1>Create a new restaurant</h1>
 
 <%= form_for @restaurant do |f| %>
-
   <% if @restaurant.errors.any? %>
     <div id="error_messages">
       <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited your restaurant from being saved:</h2>
@@ -31,6 +30,4 @@
   <div class="button">
     <%= f.button %>
   </div>
-
-
 <% end %>

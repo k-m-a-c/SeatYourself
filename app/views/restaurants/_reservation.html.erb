@@ -1,7 +1,6 @@
 <h2>Reserve a table at <span class="name"><%= @restaurant.name %></span></h2>
 
 <%= form_for [@restaurant, @reservation] do |f| %>
-
   <% if @reservation.errors.any? %>
     <div id="error_messages">
       <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
@@ -13,17 +12,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <p class="field">
     <%= f.label :time %>
-    <%= f.datetime_select :time %>
-  </div>
-  <div class="field">
+    <%= f.datetime_select :time,
+          discard_minute: true,
+          discard_second: true,
+          ampm: true,
+          default: Time.now + 1.hour %>
+  </p>
+  <p class="field">
     <%= f.label :party_size %>
     <%= f.number_field :party_size %>
-  </div>
-  <div class="submit">
-    <%= f.submit 'Reserve a table' %>
-  </div>
-
-
+  </p>
+  <p class="submit">
+    <%= f.button 'Reserve a table' %>
+  </p>
 <% end %>

@@ -1,5 +1,11 @@
 <h1><%= @restaurant.name %></h1>
 
+<nav class="edit">
+  <% if current_user == @restaurant.owner %>
+    <%= link_to 'Edit restaurant information', edit_restaurant_path(@restaurant) %>
+  <% end %>
+</nav>
+
 <p>
   <strong>Owner:</strong>
   <%= @restaurant.owner.name %>
@@ -14,5 +20,11 @@
   <strong>Capacity:</strong>
   <%= @restaurant.capacity %>
 </p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @restaurant.owner.name %>
+</p>
+
 
 <%= render '/restaurants/reservation' %>

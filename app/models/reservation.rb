@@ -9,9 +9,16 @@ class Reservation < ActiveRecord::Base
   validate :time_cannot_be_in_the_past
   validate :restaurant_over_capacity?
 
+  before_validation :convert_time_to_utc, on: [:create, :update]
+
+  def convert_time_to_utc
+    timezone = Time.now.zone
+    self.time -= Time.zone_offset(timezone)
+  end
+
   private
   def time_cannot_be_in_the_past
-    if time.present? && time < DateTime.now
+    if time && time < Time.now.utc
       errors.add(:time, "cannot be in the past.")
     end
   end
