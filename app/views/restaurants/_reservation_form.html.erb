@@ -1,0 +1,30 @@
+<h2>Reserve a table at <span class="name"><%= @restaurant.name %></span></h2>
+
+<%= form_for [@restaurant, @reservation] do |f| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_messages">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+      <ul>
+        <% @reservation.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p class="field">
+    <%= f.label :time %>
+    <%= f.datetime_select :time,
+          discard_minute: true,
+          discard_second: true,
+          ampm: true,
+          default: Time.now + 1.hour %>
+  </p>
+  <p class="field">
+    <%= f.label :party_size %>
+    <%= f.number_field :party_size %>
+  </p>
+  <p class="submit">
+    <%= f.button 'Reserve a table' %>
+  </p>
+<% end %>
