@@ -21,10 +21,4 @@
   <%= @restaurant.capacity %>
 </p>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @restaurant.owner.name %>
-</p>
-
-
-<%= render '/restaurants/reservation' %>
+<%= render 'reservation_form' %>
