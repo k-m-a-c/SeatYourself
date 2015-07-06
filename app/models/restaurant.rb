@@ -6,5 +6,10 @@ class Restaurant < ActiveRecord::Base
   validates :name, presence: true
   validates :capacity, presence: true, numericality: true
   validates :address, presence: true, uniqueness: true
+
+  def available?(size, time)
+    r = reservations.where(time: time)
+    capacity > size + r.sum(:party_size)
+  end
 end
 

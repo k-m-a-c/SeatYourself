@@ -17,17 +17,8 @@ class Reservation < ActiveRecord::Base
   end
 
   def restaurant_over_capacity?
-    remaining_capacity =
-      restaurant.capacity - restaurant.reservations.map{|r| r.party_size}.reduce(:+)
-
-    if (self.party_size > remaining_capacity) || (remaining_capacity <= 0)
-      errors.add(:party_size, "cannot exceed capacity.")
-    end
-  end
-
-  def time_must_be_on_the_hour
-    if time.present? && time #divided by an hour isn't equal to 1
-      errors.add(:time, "must be at the top of the hour")
+    if !restaurant.available?(party_size, time)
+      errors.add(:base, 'the restaurant does not have sufficient capacity')
     end
   end
 
