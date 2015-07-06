@@ -1,0 +1,35 @@
+<h1>Update restaurant: <%= @restaurant.name %></h1>
+
+<% if @restaurant.errors.any? %>
+  <div id="errors">
+    <h2>
+      <%= pluralize(@restaurant.errors.count, "error") %> prohibited your restaurant from being saved:
+    </h2>
+    <ul>
+      <% @restaurant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @restaurant do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :capacity %>
+    <%= f.number_field :capacity %>
+  </div>
+
+  <div class="button">
+    <%= f.button %>
+  </div>
+<% end %>
